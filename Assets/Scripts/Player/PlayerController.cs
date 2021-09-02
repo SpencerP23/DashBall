@@ -63,4 +63,18 @@ public class PlayerController : MonoBehaviour
 		
 	}
 
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.name == "Boost" ) {
+            StartCoroutine(PowerUp(5f));            
+            collision.gameObject.SetActive(false);
+            Debug.Log("Speedi Boi");
+        }
+    }
+
+    IEnumerator PowerUp(float duration) {
+        movePower = 15f;
+        yield return new WaitForSeconds(duration);
+        movePower = 5f;
+    }
+
 }
